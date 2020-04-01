@@ -51,6 +51,7 @@ class Element
             @processes[process.name].onTerminate!
 
         process.element = @
+        process\onAttachProcess @
 
         @processes[process.name] = process
 
