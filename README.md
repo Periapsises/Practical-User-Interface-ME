@@ -37,7 +37,7 @@ Like elements, processes can be created in many ways. Creating a process from th
 ```
 MyProcess = PUI.Process "SomeProcessName"
 ```
-The default process is also a template and therefore does nothing if you don't define it's `onUpdate` function. This function receives the element to which the process is attached as an argument. See [Attaching processes](#####attaching-processes) for further info. One of the many ways a process could be used is by making an element fade in/out of the screen. In this example we make an element fade out and then get removed using the process' `onProcessEnd` function.
+The default process is also a template and therefore does nothing if you don't define it's `onUpdate` function. This function receives the element to which the process is attached as an argument. See [Attaching processes](#attaching-processes) for further info. One of the many ways a process could be used is by making an element fade in/out of the screen. In this example we make an element fade out and then get removed using the process' `onProcessEnd` function.
 ```
 MyProcess.onUpdate = (element) =>
     newAlpha = element\getAlpha! + 1
