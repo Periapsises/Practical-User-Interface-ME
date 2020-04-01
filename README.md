@@ -69,7 +69,14 @@ Attaching processes is important as a process only starts running once attached 
 ```moon
 MyElement\attachProcess MyProcess
 ```
+When attaching a process, its `onAttachProcess` function is called with the element it is being attached to as an argument. You can change this function to edit the behavior of the process when attached. It is useful if the process needs to add data to the element or itself.
+```moon
+MyProcess.onAttachProcess = (element) =>
+    element.someData = 0
+```
+
 Once attached, the process will start running and the element it was attached to will be passed as an argument in these functions:
+- `onAttachProcess`
 - `onUpdate`
 - `onProcessEnd`
 - `onTerminate`
