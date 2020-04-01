@@ -4,6 +4,11 @@ class Process
         @element = nil
 
     --------------------------------------------------
+    -- Starting processes
+
+    onAttachProcess: (element) =>
+
+    --------------------------------------------------
     -- Updating
 
     onUpdate: (element) =>
