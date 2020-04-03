@@ -7,9 +7,6 @@ class FadeIn extends PUI.Process
     setFadeRate: (fadeRate=1) =>
         @fadeRate = fadeRate
 
-    onAttachProcess: (element) =>
-        element\setAlpha 0
-
     onUpdate: (element) =>
         newAlpha = element\getAlpha! + @fadeRate
         element\setAlpha newAlpha
