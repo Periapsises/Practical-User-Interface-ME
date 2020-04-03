@@ -42,6 +42,8 @@ class Element
 
         for element in *@frontElements
             if element\shouldBeDrawn frameTime
+                element\runProcesses!
+
                 elementPos = element.position
 
                 element\preRender frameTime
@@ -68,6 +70,8 @@ class Element
     renderChildren: =>
         for element in *@children
             if element\shouldBeDrawn frameTime
+                element\runProcesses!
+                
                 elementPos = element.position
 
                 element\preRender frameTime
