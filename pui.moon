@@ -3,14 +3,14 @@ export PUI = {}
 requiredir "elements/", {"element.lua"}
 requiredir "processes/", {"process.lua"}
 
-PUI.elements = {}
+PUI.mainElements = {}
 
 PUI.curFrame = 0
 
 PUI.onRender = ->
     PUI.curFrame += 1
 
-    for element in *PUI.elements
+    for element in *PUI.mainElements
         if element\shouldBeDrawn frameTime
             element\runProcesses!
 

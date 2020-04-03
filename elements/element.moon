@@ -1,4 +1,4 @@
-import insert from table
+import insert, remove from table
 
 class Element
     new: =>
@@ -18,13 +18,21 @@ class Element
         -- Elements that MUST be rendered before
         @frontElements = {}
 
-        insert PUI.elements, @
-
     --------------------------------------------------
     -- Visibility
 
     shouldBeDraw: (frameTime) =>
         element.visible and element.renderedAt < frameTime
+
+    setMain: (isMain) =>
+        mainElements = PUI.mainElements
+
+        if isMain
+            insert mainElements, @
+            @id = #mainElements
+        elseif @id
+            remove mainElements, @id
+            @id = nil
 
     setVisible: (visible=false) =>
         @visible = visible
