@@ -12,6 +12,9 @@ class Element
 
         @processes = {}
 
+        @parent = nil
+        @children = {}
+
         -- Elements that MUST be rendered before
         @frontElements = {}
 
@@ -42,6 +45,26 @@ class Element
 
     renderAfter: (element) =>
         insert @frontElements, element
+
+    --------------------------------------------------
+    -- Parenting
+
+    addChildren: (element) =>
+        insert @children, element
+        element.parent = @
+
+    parentTo: (element) =>
+        element\addChildren @
+
+    renderChildren: =>
+        for element in *@children
+            shouldBeDrawn = element.visible and element.renderedAt < frameTime
+
+            if shouldBeDrawn
+                elementPos = element.position
+
+                element\preRender frameTime
+                element\onRender elementPos.x, elementPos.y
 
     --------------------------------------------------
     -- Processes
