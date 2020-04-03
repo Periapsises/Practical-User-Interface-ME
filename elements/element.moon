@@ -23,6 +23,9 @@ class Element
     --------------------------------------------------
     -- Visibility
 
+    shouldBeDraw: (frameTime) =>
+        element.visible and element.renderedAt < frameTime
+
     setVisible: (visible=false) =>
         @visible = visible
 
@@ -30,9 +33,7 @@ class Element
         @renderedAt = frameTime
 
         for element in *@frontElements
-            shouldBeDrawn = element.visible and element.renderedAt < frameTime
-
-            if shouldBeDrawn
+            if element\shouldBeDrawn frameTime
                 elementPos = element.position
 
                 element\preRender frameTime
@@ -58,9 +59,7 @@ class Element
 
     renderChildren: =>
         for element in *@children
-            shouldBeDrawn = element.visible and element.renderedAt < frameTime
-
-            if shouldBeDrawn
+            if element\shouldBeDrawn frameTime
                 elementPos = element.position
 
                 element\preRender frameTime
