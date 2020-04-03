@@ -1,6 +1,6 @@
 class FadeIn extends PUI.Process
     new: =>
-        super "fadein"
+        super "fadeout"
 
         @fadeRate = 0
 
