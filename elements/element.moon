@@ -15,9 +15,6 @@ class Element
         @parent = nil
         @children = {}
 
-        -- Elements that MUST be rendered before
-        @frontElements = {}
-
     --------------------------------------------------
     -- Inheritance
 
@@ -43,25 +40,10 @@ class Element
     setVisible: (visible=false) =>
         @visible = visible
 
-    preRender: (frameTime) =>
+    render: (frameTime) =>
         @renderedAt = frameTime
 
-        for element in *@frontElements
-            if element\shouldBeDrawn frameTime
-                element\runProcesses!
-
-                elementPos = element.position
-
-                element\preRender frameTime
-                element\onRender elementPos.x, elementPos.y
-
     onRender: (x, y) =>
-
-    renderBefore: (element) =>
-        insert element.frontElements, @
-
-    renderAfter: (element) =>
-        insert @frontElements, element
 
     --------------------------------------------------
     -- Parenting
