@@ -18,6 +18,12 @@ class Element
         insert PUI.elements, @
 
     --------------------------------------------------
+    -- Inheritance
+
+    @__inherited: (child) =>
+        PUI[child.__name] = child
+
+    --------------------------------------------------
     -- Visibility
 
     setVisible: (visible=false) =>
