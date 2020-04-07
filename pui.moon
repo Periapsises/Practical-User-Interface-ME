@@ -13,10 +13,6 @@ PUI.onRender = ->
     for element in *PUI.mainElements
         if element\shouldBeDrawn frameTime
             element\runProcesses!
-
-            elementPos = element.position
-
-            element\preRender PUI.curFrame
-            element\onRender elementPos.x, elementPos.y
+            element\render PUI.curFrame
 
 hook.add "Render", "PUI_OnRender", PUI.onRender

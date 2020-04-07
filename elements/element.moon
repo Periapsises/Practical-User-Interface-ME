@@ -43,7 +43,9 @@ class Element
     render: (frameTime) =>
         @renderedAt = frameTime
 
-    onRender: (x, y) =>
+        @onRender @position.x, @position.y, @size.x, @size.y
+
+    onRender: (x, y, w, h) =>
 
     --------------------------------------------------
     -- Parenting
