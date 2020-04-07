@@ -19,6 +19,12 @@ class Element
         @frontElements = {}
 
     --------------------------------------------------
+    -- Inheritance
+
+    @__inherited: (child) =>
+        PUI[child.__name] = child
+
+    --------------------------------------------------
     -- Visibility
 
     shouldBeDraw: (frameTime) =>

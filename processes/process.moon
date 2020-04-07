@@ -4,6 +4,12 @@ class Process
         @element = nil
 
     --------------------------------------------------
+    -- Inheritance
+
+    @__inherited: (child) =>
+        PUI[child.__name] = child
+
+    --------------------------------------------------
     -- Starting processes
 
     onAttachProcess: (element) =>
