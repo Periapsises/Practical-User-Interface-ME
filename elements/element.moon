@@ -45,6 +45,18 @@ class Element
 
         @onRender @position.x, @position.y, @size.x, @size.y
 
+        parentMatrix = Matrix!
+        parentMatrix\setTranslation @position
+        parentMatrix\setScale @size / 100
+
+        render.pushMatrix parentMatrix
+
+        for element in *@children
+            element\runProcesses!
+            element\render frameTime
+
+        render.popMatrix!
+
     onRender: (x, y, w, h) =>
 
     --------------------------------------------------
