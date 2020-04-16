@@ -14,7 +14,7 @@ PUI.currentScale = Vector 1, 1
 PUI.matrixStack = {}
 
 PUI.pushMatrix = (matrix) ->
-    insert PUI.matrixStack matrix
+    insert PUI.matrixStack, matrix
     render.pushMatrix matrix
 
 PUI.popMatrix = ->
@@ -35,7 +35,7 @@ PUI.onRender = ->
     PUI.currentScale *= scale
 
     for element in *PUI.mainElements
-        if element\shouldBeDrawn frameTime
+        if element\shouldBeDrawn PUI.curFrame
             element\runProcesses!
             element\render PUI.curFrame
 

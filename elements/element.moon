@@ -24,8 +24,8 @@ class Element
     --------------------------------------------------
     -- Visibility
 
-    shouldBeDraw: (frameTime) =>
-        element.visible and element.renderedAt < frameTime
+    shouldBeDrawn: (frameTime) =>
+        @visible and @renderedAt < frameTime
 
     setMain: (isMain) =>
         mainElements = PUI.mainElements
