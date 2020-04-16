@@ -45,17 +45,21 @@ class Element
 
         @onRender @position.x, @position.y, @size.x, @size.y
 
+        scale = @size / 100
+
         parentMatrix = Matrix!
         parentMatrix\setTranslation @position
-        parentMatrix\setScale @size / 100
+        parentMatrix\setScale scale
 
-        render.pushMatrix parentMatrix
+        PUI.pushMatrix parentMatrix
+        PUI.currentScale *= scale
 
         for element in *@children
             element\runProcesses!
             element\render frameTime
 
-        render.popMatrix!
+        PUI.popMatrix!
+        PUI.currentScale /= scale
 
     onRender: (x, y, w, h) =>
 
